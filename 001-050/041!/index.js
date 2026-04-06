@@ -1,9 +1,5 @@
 function checkPandigital(num) {
   const numArr = num.toString().split('')
-  
-
-  if (numArr.includes('0')) return false
-  
 
   for (let i = 1; i <= numArr.length; i++) {
     if (!numArr.includes(i.toString())) return false
@@ -14,8 +10,6 @@ function checkPandigital(num) {
 
 
 function checkPrimeNum(n) {
-  if (n < 2) return false
-
   for (let i = 2; i <= n ** 0.5; i++) {
     if (n % i == 0) return false
   }   
@@ -24,16 +18,35 @@ function checkPrimeNum(n) {
 }
 
 
-let result = 0
-
-for (let i = 1; i <= 987654321; i += 2) {
-  
-  if (checkPrimeNum(i)) {
-    if (checkPandigital(i)) {
-      console.log(i)
-      result = i
+function rec(str, arr) {
+  if (arr.length == 0) {
+    if (checkPandigital(str)) {
+      if (checkPrimeNum(+str)) {
+        sum = str
+      }
+    }
+  } else {
+    for(i of arr) {
+      rec(str + i, arr.filter(item => item != i))
     }
   }
-  
 }
-console.log(1)
+
+
+let sum = 0
+
+for (let i = 1; i < 10; i++) {
+
+  numArr = []
+
+  for (let j = 1; j <= i; j++) {
+    numArr.push(j) 
+  }
+
+  rec('', numArr)
+}
+
+
+console.log(sum)
+
+
