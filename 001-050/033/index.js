@@ -52,7 +52,6 @@ for (let i = 10; i < 100; i++) {
     if (!doubleNumbersCheck(obj)) continue
     if (!nonZeroCheck(obj)) continue
     if (curiousCheck(obj)) {
-      console.log(obj)  
       multDenum *= obj.denumerator
       multNum *=obj.numerator
     }
