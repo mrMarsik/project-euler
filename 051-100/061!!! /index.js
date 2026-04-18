@@ -1,85 +1,102 @@
-function checkPrimeNum(n) {
-  if (n < 2) return false
-
-  for (let i = 2; i <= n ** 0.5; i++) {
-    if (n % i == 0) return false
-  }   
-
-  return true
-}
-
-
-function nextPrime(n) {
-  while (true) {
-    n++
-    if (checkPrimeNum(n)) return n
-  }
-}
-
-
-function checkPairSets(arr) {
-  for (const numA of arr) {
-    const newArr = arr.filter(elem => elem != numA)
-
-    for (const numB of newArr) {
-      if (!checkPrimeNum(numA.toString() + numB.toString())) {
-        return false
-      }
-
-      if (!checkPrimeNum(numB.toString() + numA.toString())) {
-        return false
-      }
-    }
-  }
-
-
-  return true
-}
-
-const arrPrime = [2, 3, 5, 7]
-let currentNum = 11
-
-a: while (true) {
-  let newArr = arrPrime.slice()
-
-  for (const a of newArr) {
-    for (const b of newArr) {
-      for (const c of newArr) {
-        for (const d of newArr) {
-          let checkArr = [a, b, c, d]
-          let set = new Set(checkArr)
-          if (set.size != 4) continue
-          
-          
-          if (checkPairSets(checkArr)) {
-            console.log(a + b + c + d + currentNum)
-            console.log(checkArr)
-            break a
-          }
-        }
-      }
-    }
-  }
+function checkCyclical(arr) {
   
-  arrPrime.push(currentNum)
-  currentNum = nextPrime(currentNum)
-
-  console.log(currentNum)
 }
 
-console.log(checkPairSets([3, 7, 109, 673]))
 
-console.log(arrPrime)
-
-
-
+function createTriangularNum(n) {
+  return (n * (n + 1) / 2)
+}
 
 
-// while (true) {
-//   currentNum = nextPrime(currentNum)
-//   if (arrPrime.includes(currentNum)) continue
-  
-//   if (checkPairSets([currentNum, ...arrPrime ])) {
-//     console.log(arrPrime, currentNum)
-//   }
-// }
+function createSquareNum(n) {
+  return (n * n)
+}
+
+
+function createPentagonNum(n) {
+  return (n * (3 * n - 1) / 2)
+}
+
+
+function createHexagonalNum(n) {
+  return (n * (2 * n - 1))
+}
+
+
+function createHeptagonalNum(n) {
+  return (n * (5 * n - 3) / 2)
+}
+
+
+function createOctagonalNum(n) {
+  return (n * (3 * n - 2))
+}
+
+let triangularArr = []
+let squareArr = []
+let pentagonArr = []
+let hexagonalArr = []
+let heptagonalArr = []
+let octagonalArr = []
+
+
+for (let i = 2; createTriangularNum(i) < 10000; i++) {
+  if (createTriangularNum(i) >= 1000) {
+    triangularArr.push(createTriangularNum(i))
+  }
+}
+
+for (let i = 2; createSquareNum(i) < 10000; i++) {
+  if (createSquareNum(i) >= 1000) {
+    squareArr.push(createSquareNum(i))
+  }
+}
+
+for (let i = 2; createPentagonNum(i) < 10000; i++) {
+  if (createPentagonNum(i) >= 1000) {
+    pentagonArr.push(createPentagonNum(i))
+  }
+}
+
+for (let i = 2; createHexagonalNum(i) < 10000; i++) {
+  if (createHexagonalNum(i) >= 1000) {
+    hexagonalArr.push(createHexagonalNum(i))
+  }
+}
+
+for (let i = 2; createHeptagonalNum(i) < 10000; i++) {
+  if (createHeptagonalNum(i) >= 1000) {
+    heptagonalArr.push(createHeptagonalNum(i))
+  }
+}
+
+for (let i = 2; createOctagonalNum(i) < 10000; i++) {
+  if (createOctagonalNum(i) >= 1000) {
+    octagonalArr.push(createOctagonalNum(i))
+  }
+}
+
+
+
+
+
+
+
+// console.log(triangularArr)
+// console.log(squareArr)
+// console.log(pentagonArr)
+// console.log(hexagonalArr)
+// console.log(heptagonalArr)
+// console.log(octagonalArr)
+
+
+
+
+checkCyclical([1,2,3,4,5,6])
+
+// console.log(createTriangularNum())
+// console.log(createSquareNum())
+// console.log(createPentagonNum())
+// console.log(createHexagonalNum())
+// console.log(createHeptagonalNum())
+// console.log(createOctagonalNum())
