@@ -1,18 +1,3 @@
-function getChainsLength(num) {
-  const chainsArr = [num]
-  let currentNum = num
-  while (true) {
-    currentNum = getFactorialSum(currentNum)
-
-    if (chainsArr.includes(currentNum)) {
-      return chainsArr.length
-    }
-
-    chainsArr.push(currentNum)
-  }
-}
-
-
 function getFactorialSum(num) {
   const numArr = num.toString().split('')
   
@@ -37,13 +22,40 @@ function getFactorial(num) {
 }
 
 
-let mainCount = 0
+const deadList = new Set()
+const chainStats = {}
 
-for (let i = 1; i < 1_000_000; i++) {
-  if (getChainsLength(i) == 60) {
-    mainCount++
+
+
+function getChainsLength(num) {
+  const chainsArr = [num]
+  let currentNum = num
+  while (currentNum) {
+    currentNum = getFactorialSum(currentNum)
+    
+    if (chainsArr.includes(currentNum)) {
+
+      for (let i = 0; i < chainsArr.length - chainsArr.indexOf(currentNum) - 1; i++) {
+        const index = chainsArr[i]      
+      }
+
+      return chainsArr.length
+    }
+
+    chainsArr.push(currentNum)
+  }
+}
+
+
+const N = 60
+const M = 1000000
+let liveCount = 0
+
+for (let i = 2; i < M; i++) {
+  if (getChainsLength(i) == N) {
+    liveCount++
   }
   
 }
 
-console.log(mainCount)
+console.log(liveCount)
